@@ -7,6 +7,14 @@ const timer = document.querySelector("#timer");
 const banner = document.querySelector(".app__image");
 const titulo = document.querySelector(".app__title");
 const pauseBtn = document.querySelector("#start-pause");
+const musicaPlay = new Audio('/sons/play.wav')
+const musicaPause = new Audio('/sons/pause.mp3')
+const musicaFim = new Audio('/sons/beep.mp3')
+
+let intervaloId = null
+let timerFoco = 5;
+let timerCurto = 300;
+let timerLongo = 900;
 
 //Propriedades para o audio
 const musicaFocoInput = document.querySelector('#alternar-musica')
@@ -20,10 +28,6 @@ musicaFocoInput.addEventListener('change', () => {
         musica.pause()
     }
 })
-
-let timerFoco = 1500;
-let timerCurto = 300;
-let timerLongo = 900;
 
 focoBtn.addEventListener("click", () => {
   alterarContexto("foco");
@@ -66,4 +70,36 @@ function alterarContexto(contexto) {
         break;    
   }
 
+}
+
+const contagemRegressiva = () => {
+    if(timerFoco <= 0) {
+        
+        
+        alert('Tempo finalizado!')
+        zerar()
+        musicaFim.play()
+        return
+
+    }
+    timerFoco --
+    console.log('Temporizador: '+timerFoco)
+}
+
+pauseBtn.addEventListener('click', iniciarOuPausar)
+
+function iniciarOuPausar() {
+    if(intervaloId) {
+        musicaPause.play()
+        zerar()        
+        return
+    }
+    musicaPlay.play()
+    intervaloId = setInterval(contagemRegressiva, 1000)
+}
+
+function zerar() {
+    clearInterval(intervaloId)
+
+    intervaloId = null
 }
