@@ -2,6 +2,7 @@
 # Fokus - Pomodoro Timer 🍅
 
 Este projeto foi desenvolvido como parte do curso de **JavaScript e manipulação do DOM** da [Alura](https://www.alura.com.br/). O objetivo principal do projeto é aprofundar os conhecimentos na manipulação de elementos da página (DOM) usando JavaScript vanilla.
+
 [Acesse o projeto online aqui](https://lidiavidal.github.io/fokus-pomodoroTimer/)
 
 ## 📝 Sobre o Projeto
